@@ -1,3 +1,4 @@
+const axios = require('axios')
 const pkg = require('./package')
 
 module.exports = {
@@ -27,6 +28,7 @@ module.exports = {
   },
 
   router: {
+    base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/jsvuejs1/' : '/',
     linkActiveClass: 'active'
   },
 
@@ -87,6 +89,18 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    }
+  },
+
+  generate: {
+    routes: function() {
+      return axios
+        .get('https://randomuser.me/api/?nat=gb,us,au&results=10&seed=abc')
+        .then(res => {
+          return res.data.results.map(user => {
+            return '/users/' + user.login.uuid
+          })
+        })
     }
   }
 }
