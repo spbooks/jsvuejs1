@@ -1,6 +1,6 @@
-# blog
+# Jump Start Vue.js - Chapter 7 Demo
 
-> My mind-blowing Nuxt.js project
+This example builds upon everything covered in the book. It uses the concepts learned to create a Nuxt.js app with a Vuex store and authentication that fetches data from a remote API and displays it in a custom component, linking to a detail page for each item.
 
 ## Build Setup
 
